@@ -1,31 +1,33 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.9.34728.123
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{D7D39AF7-FE60-442B-96C0-82F6AF67241C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{21EDEEE4-C2C0-461B-A124-32D1372E4255}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		Main = Main
-	EndProjectSection
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D7D39AF7-FE60-442B-96C0-82F6AF67241C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D7D39AF7-FE60-442B-96C0-82F6AF67241C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D7D39AF7-FE60-442B-96C0-82F6AF67241C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D7D39AF7-FE60-442B-96C0-82F6AF67241C}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8C897213-FB7E-4C17-B17F-EBA32EF77D7E}
-	EndGlobalSection
-EndGlobal
+sing System.Numerics;
+
+public class Item
+{// 플레이어의 인벤토리 상태를 보여줌
+    static void DisplayInventoryInfo()
+    {
+        Console.Clear();
+        ("인벤토리").PrintWithColor(ConsoleColor.Yellow, true);
+        Console.WriteLine("보유 중인 아이템을 관리할 수 있습니다.");
+        Console.WriteLine();
+        if (player.GetItemCount() == 0)
+        {
+            Console.WriteLine();
+            Console.WriteLine("보유하고 있는 아이템이 없습니다!");
+        }
+        else
+        {
+            player.DisplayItemInventory(0);
+            Console.WriteLine();
+
+            ("1").PrintWithColor(ConsoleColor.Magenta, false); Console.WriteLine(". 장착 관리");
+            ("2").PrintWithColor(ConsoleColor.Magenta, false); Console.WriteLine(". 아이템 정렬");
+            ("0").PrintWithColor(ConsoleColor.Magenta, false); Console.WriteLine(". 나가기");
+            Console.WriteLine();
+
+            int select = GetPlayerSelect(0, 2);
+            if (select == 0) startState = select;
+            else if (select == 1) ManagementItemInventory();
+            else ArrangeItemInventory();
+        }
+    }
+
+}
